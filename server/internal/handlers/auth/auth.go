@@ -4,9 +4,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/davinder1436/fingenie/internal/models"
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/sukh-j-14/fingenie-main/internal/models"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )

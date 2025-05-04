@@ -3,8 +3,8 @@ package profile
 import (
 	"time"
 
-	"github.com/davinder1436/fingenie/internal/models"
 	"github.com/gofiber/fiber/v2"
+	"github.com/sukh-j-14/fingenie-main/internal/models"
 	"gorm.io/gorm"
 )
 
@@ -151,40 +151,39 @@ func (h *Handler) DeleteIncomeStream(c *fiber.Ctx) error {
 		"message": "Income stream deleted successfully",
 	})
 }
-// Add this function to the existing profile.go file
 
 func (h *Handler) GetUsersByPhoneNumber(c *fiber.Ctx) error {
-    phoneNumber := c.Params("phoneNumber")
-    
-    // Basic validation for phone number
-    if phoneNumber == "" {
-        return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-            "success": false,
-            "error":   "Phone number is required",
-        })
-    }
+	phoneNumber := c.Params("phoneNumber")
 
-    var users []models.User
-    result := h.db.Select("id, display_name, phone_number, telegram_id, whatsapp_number").
-        Where("phone_number = ?", phoneNumber).
-        Find(&users)
+	// Basic validation for phone number
+	if phoneNumber == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"success": false,
+			"error":   "Phone number is required",
+		})
+	}
 
-    if result.Error != nil {
-        return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-            "success": false,
-            "error":   "Error fetching users",
-        })
-    }
+	var users []models.User
+	result := h.db.Select("id, display_name, phone_number, telegram_id, whatsapp_number").
+		Where("phone_number = ?", phoneNumber).
+		Find(&users)
 
-    if len(users) == 0 {
-        return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
-            "success": false,
-            "error":   "No users found with this phone number",
-        })
-    }
+	if result.Error != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"success": false,
+			"error":   "Error fetching users",
+		})
+	}
 
-    return c.JSON(fiber.Map{
-        "success": true,
-        "data":    users,
-    })
+	if len(users) == 0 {
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+			"success": false,
+			"error":   "No users found with this phone number",
+		})
+	}
+
+	return c.JSON(fiber.Map{
+		"success": true,
+		"data":    users,
+	})
 }

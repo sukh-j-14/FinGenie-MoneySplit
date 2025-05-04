@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/davinder1436/fingenie/api"
-	"github.com/davinder1436/fingenie/pkg/database/postgres"
+	"github.com/sukh-j-14/fingenie-main/api"
+	"github.com/sukh-j-14/fingenie-main/pkg/database/postgres"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 

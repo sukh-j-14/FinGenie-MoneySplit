@@ -827,7 +827,7 @@ BlocBuilder<GroupBloc, GroupState>(
 ### Environment Setup
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/fingenie.git
+git clone https://github.com/sukh-j-14/fingenie-main.git
 cd fingenie
 ```
 

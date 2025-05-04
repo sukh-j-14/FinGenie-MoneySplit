@@ -1,9 +1,9 @@
 package api
 
 import (
-	"github.com/davinder1436/fingenie/internal/handlers/expense"
-	"github.com/davinder1436/fingenie/internal/middleware"
 	"github.com/gofiber/fiber/v2"
+	"github.com/sukh-j-14/fingenie-main/internal/handlers/expense"
+	"github.com/sukh-j-14/fingenie-main/internal/middleware"
 	"gorm.io/gorm"
 )
 

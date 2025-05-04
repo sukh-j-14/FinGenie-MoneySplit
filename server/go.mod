@@ -1,4 +1,4 @@
-module github.com/davinder1436/fingenie
+module github.com/sukh-j-14/fingenie-main
 
 go 1.22.2
 

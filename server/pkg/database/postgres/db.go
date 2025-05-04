@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/davinder1436/fingenie/internal/models"
+	"github.com/sukh-j-14/fingenie-main/internal/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

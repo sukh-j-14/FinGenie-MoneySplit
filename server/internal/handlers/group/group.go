@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/davinder1436/fingenie/internal/models"
 	"github.com/gofiber/fiber/v2"
+	"github.com/sukh-j-14/fingenie-main/internal/models"
 	"gorm.io/gorm"
 )
 
