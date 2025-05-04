@@ -8,7 +8,7 @@ import (
 	"github.com/sukh-j-14/fingenie-main/pkg/database/postgres"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
-
+)
 
 func main() {
 	// Initialize Fiber app

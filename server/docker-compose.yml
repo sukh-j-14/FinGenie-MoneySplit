@@ -8,8 +8,8 @@ services:
       DB_HOST: postgres
       DB_PORT: 5432
       DB_USER: postgres
-      DB_PASSWORD: Davinder22#
-      DB_NAME: database-1
+      DB_PASSWORD: postgres
+      DB_NAME: fingenie
       DB_SSLMODE: disable
       PORT: 3000
     ports:
@@ -24,8 +24,8 @@ services:
     container_name: fingenie
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Davinder22#
-      POSTGRES_DB: database-1
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fingenie
     ports:
       - "5432:5432"
     volumes:
