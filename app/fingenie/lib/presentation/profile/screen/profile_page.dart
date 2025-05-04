@@ -13,9 +13,9 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  late Box<UserModel> userBox;
+  Box<UserModel>? userBox;
   UserModel? currentUser;
-  String? token; // Add this variable
+  String? token;
 
   @override
   void initState() {
@@ -33,12 +33,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
       // Debug box state before loading
       await AuthRepository.debugBoxContents();
 
-      if (!Hive.isBoxOpen('userBox')) {
-        await Hive.openBox<UserModel>('userBox');
+      // Register the adapter if not already registered
+      if (!Hive.isAdapterRegistered(3)) {
+        Hive.registerAdapter(UserModelAdapter());
       }
 
-      final box = Hive.box<UserModel>('userBox');
-      final user = box.get('current_user');
+      // Open the box
+      userBox = await Hive.openBox<UserModel>('userBox');
+      final user = userBox?.get('current_user');
 
       if (user != null) {
         setState(() {
@@ -54,9 +56,9 @@ IsLoggedIn: ${user.isLoggedIn}
       } else {
         AppLogger.warning('''
 Profile: No user found in box
-Box is open: ${Hive.isBoxOpen('userBox')}
-Box length: ${box.length}
-Box keys: ${box.keys.toList()}
+Box is open: ${userBox?.isOpen}
+Box length: ${userBox?.length}
+Box keys: ${userBox?.keys.toList()}
 ''');
       }
     } catch (e) {
@@ -126,7 +128,7 @@ Box keys: ${box.keys.toList()}
                           label: 'ID',
                           value: currentUser!.id,
                         ),
-                        if (token != null) // Add this condition
+                        if (token != null)
                           _buildInfoItem(
                             icon: Icons.vpn_key,
                             label: 'Auth Token',
@@ -194,7 +196,9 @@ Box keys: ${box.keys.toList()}
 
   @override
   void dispose() {
-    userBox.close();
+    if (userBox != null && userBox!.isOpen) {
+      userBox!.close();
+    }
     super.dispose();
   }
 }

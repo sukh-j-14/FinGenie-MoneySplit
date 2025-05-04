@@ -14,7 +14,9 @@
 /home/sukh/Documents/fingenie-main/app/fingenie/build/linux/x64/debug/bundle/data/flutter_assets/assets/intro/analytics.json
 /home/sukh/Documents/fingenie-main/app/fingenie/build/linux/x64/debug/bundle/data/flutter_assets/assets/icon/icon.jpg
 /home/sukh/Documents/fingenie-main/app/fingenie/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.bin
+/home/sukh/Documents/fingenie-main/app/fingenie/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.bin.json
 /home/sukh/Documents/fingenie-main/app/fingenie/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
+/home/sukh/Documents/fingenie-main/app/fingenie/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES
 /home/sukh/Documents/fingenie-main/app/fingenie/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
 /home/sukh/Documents/fingenie-main/app/fingenie/build/linux/x64/debug/bundle/data/flutter_assets/NativeAssetsManifest.json
 /home/sukh/Documents/fingenie-main/app/fingenie/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.json

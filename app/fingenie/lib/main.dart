@@ -11,15 +11,24 @@ import 'package:fingenie/presentation/home/screens/home.dart';
 import 'package:fingenie/presentation/onboarding/screens/intro/intro_screen.dart';
 import 'package:fingenie/utils/app_logger.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:io' show Platform;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
     await Hive.initFlutter();
     await dotenv.load(fileName: ".env");
+
+    // Initialize permission handler only for mobile platforms
+    if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
+      await Permission.contacts.request();
+      await Permission.storage.request();
+    }
 
     if (!Hive.isAdapterRegistered(3)) {
       Hive.registerAdapter(UserModelAdapter());

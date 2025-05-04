@@ -15,6 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:fingenie/data/auth/auth_repository.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -77,6 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: MultiBlocProvider(
                         providers: [
+                          Provider<AuthRepository>(
+                            create: (context) => AuthRepository(),
+                          ),
                           Provider<GroupRepository>(
                             create: (context) => GroupRepository(
                               dio: Dio(),
