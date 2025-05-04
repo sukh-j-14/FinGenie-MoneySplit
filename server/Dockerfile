@@ -13,8 +13,8 @@ RUN go mod download
 # Copy the entire project
 COPY . .
 
-# Build the Go binary
-RUN go build -o main cmd/api/main.go
+# Build the Go binary with CGO disabled for static linking
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main cmd/api/main.go
 
 # Use a minimal base image for the final container
 FROM alpine:latest

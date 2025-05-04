@@ -1,0 +1,1 @@
+ /home/sukh/Documents/fingenie-main/app/fingenie/.dart_tool/flutter_build/18d56af105754d9eeee56a572caa2028/native_assets.json: 
