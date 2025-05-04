@@ -1,0 +1,31 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      email: json['email'] as String,
+      phoneNumber: json['phoneNumber'] as String,
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      token: json['token'] as String,
+      isLoggedIn: json['isLoggedIn'] as bool? ?? true,
+      currency: json['currency'] as String,
+      age: (json['age'] as num).toInt(),
+      occupation: json['occupation'] as String,
+      monthlyIncome: (json['monthly_income'] as num).toDouble(),
+    );
+
+Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'email': instance.email,
+      'phoneNumber': instance.phoneNumber,
+      'createdAt': instance.createdAt.toIso8601String(),
+      'token': instance.token,
+      'isLoggedIn': instance.isLoggedIn,
+      'currency': instance.currency,
+      'age': instance.age,
+      'occupation': instance.occupation,
+      'monthly_income': instance.monthlyIncome,
+    };
