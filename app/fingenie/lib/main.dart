@@ -35,8 +35,6 @@ void main() async {
     }
 
     await ContactsService.initializeHive();
-    await Hive.openBox<UserModel>('userBox');
-
     await AuthRepository.init();
 
     // Open user box

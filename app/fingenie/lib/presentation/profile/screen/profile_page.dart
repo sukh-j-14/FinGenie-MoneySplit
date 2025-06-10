@@ -1,5 +1,6 @@
 import 'package:fingenie/data/auth/auth_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:fingenie/utils/app_logger.dart';
 import 'package:fingenie/domain/models/user_model.dart';
@@ -16,11 +17,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Box<UserModel>? userBox;
   UserModel? currentUser;
   String? token;
+  String? errorMessage;
 
   @override
   void initState() {
     super.initState();
     _loadUserData();
+  }
+
+  void _showErrorSnackBar(String message) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(message),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    });
   }
 
   Future<void> _loadUserData() async {
@@ -38,8 +53,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Hive.registerAdapter(UserModelAdapter());
       }
 
-      // Open the box
-      userBox = await Hive.openBox<UserModel>('userBox');
+      // Use the already opened box
+      userBox = Hive.box<UserModel>('userBox');
+
+      if (userBox == null) {
+        throw Exception('Failed to open userBox');
+      }
+
       final user = userBox?.get('current_user');
 
       if (user != null) {
@@ -63,6 +83,7 @@ Box keys: ${userBox?.keys.toList()}
       }
     } catch (e) {
       AppLogger.error('Profile: Error loading user data: $e');
+      _showErrorSnackBar('Error loading profile: ${e.toString()}');
     }
   }
 
