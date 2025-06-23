@@ -1,7 +1,6 @@
 # FinGenie
 
 **FinGenie** is a modern money-splitting and group expense management application built with Flutter. It leverages AI-powered features, OCR for receipt scanning, and a beautiful, intuitive UI to make managing shared expenses effortless for friends, roommates, families, and colleagues.
-
 ---
 
 ## Features
